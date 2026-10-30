@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI로 제작한 사이버 보안 포트폴리오 데모 웹사이트" />
+  <title>SENTINEL // AI SECURITY LAB</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">S</span><span>SENTINEL<span class="muted">.LAB</span></span></a>
+    <nav class="nav"><a href="#dashboard">Dashboard</a><a href="#capabilities">Capabilities</a><a href="#roadmap">Roadmap</a></nav>
+    <div class="status-pill"><span class="status-dot"></span>DEMO ONLINE</div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span>AI GENERATED PROJECT</span> / SECURITY VISUALIZATION</div>
+        <h1>SEE THE SIGNAL.<br /><span>UNDERSTAND THE RISK.</span></h1>
+        <p class="hero-text">보안 로그와 이벤트의 흐름을 시각적으로 표현한 인터랙티브 데모입니다. 실제 보안 스캔이 아닌 <strong>포트폴리오용 시뮬레이션 데이터</strong>로 동작합니다.</p>
+        <div class="hero-actions"><a class="button primary" href="#dashboard">대시보드 보기</a><button class="button ghost" id="runDemo">DEMO SCAN 실행</button></div>
+        <div class="hero-meta"><div><span>01</span> AI-assisted UI</div><div><span>02</span> Security concept</div><div><span>03</span> Interactive demo</div></div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div>
+        <div class="scanner">
+          <div class="scanner-ring ring-a"></div><div class="scanner-ring ring-b"></div><div class="scanner-ring ring-c"></div>
+          <div class="scanner-core"><span id="heroRisk">27</span><small>RISK</small></div><div class="scan-line"></div>
+        </div>
+        <div class="floating-tag tag-1">TLS / OK</div><div class="floating-tag tag-2">AUTH / WATCH</div><div class="floating-tag tag-3">LOG / ACTIVE</div>
+      </div>
+    </section>
+
+    <section class="dashboard-section" id="dashboard">
+      <div class="section-heading"><div><span class="section-index">01</span><h2>THREAT PULSE</h2></div><p>사용자 입력과 네트워크 이벤트를 가정한 데모 데이터를 실시간처럼 표현합니다.</p></div>
+      <div class="dashboard-grid">
+        <article class="panel risk-panel">
+          <div class="panel-head"><span>RISK SCORE</span><span class="tiny">SIMULATION</span></div>
+          <div class="risk-body"><div class="risk-number"><span id="riskScore">27</span><small>/100</small></div><div class="risk-label" id="riskLabel">LOW–MODERATE</div><div class="meter"><div class="meter-fill" id="riskMeter"></div></div><p>인증 실패, 비정상 접근, 요청 빈도를 단순 점수로 표현한 UI 데모입니다.</p></div>
+        </article>
+
+        <article class="panel stat-panel">
+          <div class="panel-head"><span>EVENT SUMMARY</span><span class="tiny">LAST 24H</span></div>
+          <div class="stats"><div class="stat"><span class="stat-value" id="blockedCount">1,248</span><span class="stat-label">BLOCKED</span></div><div class="stat"><span class="stat-value" id="authFailCount">86</span><span class="stat-label">AUTH FAIL</span></div><div class="stat"><span class="stat-value" id="activeCount">12</span><span class="stat-label">ACTIVE</span></div></div>
+          <div class="bars"><div><span style="--h:72%"></span></div><div><span style="--h:38%"></span></div><div><span style="--h:61%"></span></div><div><span style="--h:49%"></span></div><div><span style="--h:82%"></span></div><div><span style="--h:53%"></span></div><div><span style="--h:66%"></span></div><div><span style="--h:44%"></span></div><div><span style="--h:76%"></span></div><div><span style="--h:58%"></span></div><div><span style="--h:90%"></span></div><div><span style="--h:64%"></span></div></div>
+        </article>
+
+        <article class="panel feed-panel"><div class="panel-head"><span>LIVE EVENT FEED</span><span class="tiny live"><i></i> LIVE</span></div><div class="event-feed" id="eventFeed"></div></article>
+
+        <article class="panel map-panel">
+          <div class="panel-head"><span>TRAFFIC MODEL</span><span class="tiny">DEMO</span></div>
+          <div class="network-map">
+            <svg viewBox="0 0 620 260" role="img" aria-label="Simulated network traffic graph">
+              <defs><linearGradient id="lineGrad" x1="0" x2="1"><stop offset="0%" stop-color="#78ffb7" stop-opacity=".2"/><stop offset="50%" stop-color="#78ffb7" stop-opacity=".9"/><stop offset="100%" stop-color="#78ffb7" stop-opacity=".15"/></linearGradient></defs>
+              <g class="connections"><path d="M70 170 L205 90 L330 145 L470 70 L555 160" /><path d="M70 170 L190 210 L330 145 L430 215 L555 160" /><path d="M205 90 L190 210" /><path d="M470 70 L430 215" /></g>
+              <g class="nodes"><circle cx="70" cy="170" r="9"/><circle cx="205" cy="90" r="9"/><circle cx="190" cy="210" r="9"/><circle cx="330" cy="145" r="13" class="core-node"/><circle cx="470" cy="70" r="9"/><circle cx="430" cy="215" r="9"/><circle cx="555" cy="160" r="9"/></g>
+              <g class="labels"><text x="49" y="195">WEB</text><text x="184" y="69">AUTH</text><text x="164" y="239">API</text><text x="305" y="176">CORE</text><text x="450" y="49">LOG</text><text x="408" y="244">DB</text><text x="535" y="187">EDGE</text></g>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="capabilities" id="capabilities">
+      <div class="section-heading"><div><span class="section-index">02</span><h2>WHAT THIS PROJECT SHOWS</h2></div><p>기술 자체보다, 학습한 개념을 화면과 상호작용으로 연결하는 데 초점을 맞췄습니다.</p></div>
+      <div class="card-row">
+        <article class="feature-card"><span class="feature-no">A</span><h3>상태 변화</h3><p>버튼 클릭 시 위험 점수와 이벤트 값이 변하며 화면이 즉시 갱신됩니다.</p></article>
+        <article class="feature-card"><span class="feature-no">B</span><h3>로그 표현</h3><p>로그인 실패, 차단, API 요청 등 보안에서 자주 접하는 이벤트를 시각화했습니다.</p></article>
+        <article class="feature-card"><span class="feature-no">C</span><h3>AI 협업</h3><p>레이아웃과 시각 표현은 AI의 도움을 받아 제작하고, 구조와 동작을 직접 확인했습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+      <div class="roadmap-copy"><span class="section-index">03</span><h2>FROM DEVELOPMENT<br/>TO SECURITY</h2><p>프론트엔드 구조와 데이터 흐름을 이해한 뒤, 로그 분석과 웹 보안 학습으로 확장하는 것을 목표로 합니다.</p></div>
+      <div class="roadmap-steps"><div class="step active"><span>01</span><strong>WEB STRUCTURE</strong><small>HTML / CSS / JS</small></div><div class="step active"><span>02</span><strong>DATA FLOW</strong><small>API / STATE / LOG</small></div><div class="step"><span>03</span><strong>SECURITY</strong><small>ANALYSIS / DEFENSE</small></div></div>
+    </section>
+  </main>
+
+  <footer><div>SENTINEL.LAB / AI-ASSISTED PORTFOLIO DEMO</div><div>SIMULATED DATA ONLY</div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-dot"></span><div><strong>DEMO SCAN COMPLETE</strong><small>시뮬레이션 이벤트가 갱신되었습니다.</small></div></div>
+  <script src="./app.js"></script>
+</body>
+</html>
